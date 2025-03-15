@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Tournament</title>
+  <!-- Bootstrap CSS (still used for layout) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Font for a futuristic look -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1d1f20, #4b4f54);
+      font-family: 'Orbitron', sans-serif;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px #000;
+    }
+    label {
+      font-weight: bold;
+    }
+    .form-control, .form-control-file, textarea {
+      background-color: #2b2b2b;
+      border: none;
+      color: #f0f0f0;
+    }
+    .form-control::placeholder {
+      color: #888;
+    }
+    .btn-primary {
+      background-color: #ff0055;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 30px;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #e6004c;
+    }
+    .alert-warning {
+      background-color: #ff0055;
+      border-color: #e6004c;
+      color: #fff;
+    }
+    p.text-center {
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Tournament</h1>
+    <p class="text-center">Unleash your inner edge. Upload PDF resumes and define the future of your team.</p>
+    
+    <!-- Flash messages for feedback -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-warning" role="alert">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    
+    <form method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="job_description">Job Description</label>
+        <textarea class="form-control" id="job_description" name="job_description" rows="4" placeholder="Describe the job requirements, skills, and vibe..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="files">Upload Resume PDFs</label>
+        <input type="file" class="form-control-file" id="files" name="files" multiple required>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Start Tournament</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+pandas
+Flask
+PyPDF2
+langchain
+langchain_openai
